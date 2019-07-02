@@ -1,6 +1,7 @@
 # ComfyVars
 Super-Easy Observable (and Debuggable!) Values in Javascript! It's like push notifications for your variables.
-**ComfyVars** lets you add a callback event to be notified whenever a value is changed in your object.
+
+**ComfyVars** lets you add a callback event so you know whenever something is changed in your object.
 
 ```javascript
 var normalObject = {}; // no callback
@@ -8,7 +9,7 @@ var comfyObject = ComfyVars.Watchable( ( prop, value ) => {} ); // YES CALLBACK!
 ```
 
 ## Instafluff ##
-> *Come and hang out with us at the Comfiest Corner on Twitch!*
+> *Come and hang out with us at the Comfiest Corner on Twitch! I build stuff like this live on stream!*
 
 > https://twitch.tv/instafluff
 

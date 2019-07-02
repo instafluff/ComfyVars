@@ -12,22 +12,16 @@ function assignWatcher( obj ) {
 				if( prop === "isWatcher" ) {
 					return true;
 				}
-				if( values[ target._cvid ].isDebug ) {
-					console.log( "GET:", prop );
-				}
-				if( values[ target._cvid ].watch ) {
-					values[ target._cvid ].watch( "get", target, prop );
-				}
 				return target[ prop ];
 			},
 			set: function( target, prop, value ) {
 				target[ prop ] = value;
 				if( prop === "_cvid" ) { return true; }
 				if( values[ target._cvid ].isDebug ) {
-					console.log( "SET:", prop, "=", value );
+					console.log( "DEBUG:", prop, "=", value );
 				}
 				if( values[ target._cvid ].watch ) {
-					values[ target._cvid ].watch( "set", prop, value );
+					values[ target._cvid ].watch( prop, value );
 				}
 				return true;
 			}
@@ -44,18 +38,18 @@ function assignWatcher( obj ) {
 
 var comfyVars = {
 	version: function() {
-		return "1.0.0";
+		return "1.1.2";
 	},
-	Debuggable: function() {
-		obj = assignWatcher( {} );
+	Debuggable: function( val ) {
+		obj = assignWatcher( val || {} );
 		values[ obj._cvid ].isDebug = true;
 		return obj;
 	},
-	Watchable: function( callback ) {
+	Watchable: function( callback, val ) {
 		if( typeof callback !== "function" ) {
 			throw new Error( "Callback must be a function" );
 		}
-		obj = assignWatcher( {} );
+		obj = assignWatcher( val || {} );
 		values[ obj._cvid ].watch = callback;
 		return obj;
 	}

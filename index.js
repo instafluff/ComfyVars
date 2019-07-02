@@ -11,22 +11,16 @@ function assignWatcher( obj ) {
 				if( prop === "isWatcher" ) {
 					return true;
 				}
-				if( values[ target._cvid ].isDebug ) {
-					console.log( "GET:", prop );
-				}
-				if( values[ target._cvid ].watch ) {
-					values[ target._cvid ].watch( "get", target, prop );
-				}
 				return target[ prop ];
 			},
 			set: function( target, prop, value ) {
 				target[ prop ] = value;
 				if( prop === "_cvid" ) { return true; }
 				if( values[ target._cvid ].isDebug ) {
-					console.log( "SET:", prop, "=", value );
+					console.log( "DEBUG:", prop, "=", value );
 				}
 				if( values[ target._cvid ].watch ) {
-					values[ target._cvid ].watch( "set", prop, value );
+					values[ target._cvid ].watch( prop, value );
 				}
 				return true;
 			}

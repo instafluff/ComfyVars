@@ -4,11 +4,23 @@ var debug = ComfyVars.Debuggable();
 debug.test = "Debug World";
 var testGet = debug[ "test" ];
 
-var example = ComfyVars.Watchable( ( event, prop, value ) => {
-	console.log( "Watching:", event, prop, value );
+var player = ComfyVars.Watchable( ( prop, value ) => {
+	console.log( "Watching:", prop, "set to", value );
+	if( prop === "xp" ) {
+		checkForLevelUp();
+	}
 } );
-example.name = "Hello World";
+player.name = "Instafluff";
+player.xp = 0;
 
-console.log( example );
-example.name = "Comfy World";
-console.log( example );
+function checkForLevelUp() {
+	if( player.xp > 5 ) {
+		console.log( "Level up!" );
+	}
+}
+
+console.log( player );
+player.xp += 5;
+console.log( player );
+player.xp += 5; // Console: Level up!
+console.log( player );

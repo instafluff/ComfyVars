@@ -8,6 +8,27 @@ Super-Easy Observable (and Debuggable!) Values in Javascript
 
 > https://twitter.com/instafluffTV
 
+## Example ##
+
+```javascript
+var player = ComfyVars.Watchable( ( prop, value ) => {
+    if( prop === "xp" ) {
+        checkForLevelUp();
+    }
+} );
+player.name = "Instafluff";
+player.xp = 0;
+
+function checkForLevelUp() {
+    if( player.xp > 5 ) {
+        console.log( "Level up!" );
+    }
+}
+
+player.xp += 5;
+player.xp += 5; // Console: Level up!
+```
+
 ## Instructions ##
 
 #### Node
@@ -19,11 +40,11 @@ npm install comfyvars --save
 2. Create watchable objects using ComfyVars
 ```javascript
 var ComfyVars = require("comfyvars");
-var example = ComfyVars.Watchable( ( event, prop, value ) => {
-    console.log( "Watching:", event, prop, value );
+var example = ComfyVars.Watchable( ( prop, value ) => {
+    console.log( "Watching:", prop, value );
 } );
 example.name = "Hello World";
-// This will output: "Watching: set name Hello World"
+// This will output: "Watching: name Hello World"
 ```
 
 #### Browser
@@ -40,11 +61,11 @@ example.name = "Hello World";
   </head>
   <body>
     <script type="text/javascript">
-        var example = ComfyVars.Watchable( ( event, prop, value ) => {
-            console.log( "Watching:", event, prop, value );
+        var example = ComfyVars.Watchable( ( prop, value ) => {
+            console.log( "Watching:", prop, value );
         } );
         example.name = "Hello World";
-        // This will output: "Watching: set name Hello World"
+        // This will output: "Watching: name Hello World"
     </script>
   </body>
 </html>
@@ -58,7 +79,6 @@ var debug = ComfyVars.Debuggable();
 debug.test = "Debug World";
 var testGet = debug[ "test" ];
 /* This will output:
-    SET: test = Debug World
-    GET: test
+    DEBUG: test = Debug World
 */
 ```

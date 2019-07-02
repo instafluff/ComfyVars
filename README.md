@@ -82,3 +82,24 @@ var testGet = debug[ "test" ];
     DEBUG: test = Debug World
 */
 ```
+
+## Initial Value
+
+Values can be initialized by passing in the object as a parameter:
+```javascript
+var debug = ComfyVars.Debuggable( { test: "Debug World" });
+var testGet = debug[ "test" ];
+
+var player = ComfyVars.Watchable( ( prop, value ) => {
+    if( prop === "xp" ) {
+        checkForLevelUp();
+    }
+}, { name: "Instafluff", xp: 0 } );
+
+function checkForLevelUp() {
+    if( player.xp > 5 ) {
+        console.log( "Level up!" );
+    }
+}
+player.xp += 10;
+```

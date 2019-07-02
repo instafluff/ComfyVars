@@ -39,16 +39,16 @@ var comfyVars = {
 	version: function() {
 		return "@VERSION";
 	},
-	Debuggable: function() {
-		obj = assignWatcher( {} );
+	Debuggable: function( val = {} ) {
+		obj = assignWatcher( val );
 		values[ obj._cvid ].isDebug = true;
 		return obj;
 	},
-	Watchable: function( callback ) {
+	Watchable: function( callback, val = {} ) {
 		if( typeof callback !== "function" ) {
 			throw new Error( "Callback must be a function" );
 		}
-		obj = assignWatcher( {} );
+		obj = assignWatcher( val );
 		values[ obj._cvid ].watch = callback;
 		return obj;
 	}

@@ -1,5 +1,5 @@
 # ComfyVars
-Super-Easy Observable (and Debuggable!) Values in Javascript! It's like push notifications for your variables.
+Super-Easy Observable (and Debuggable!) Values in Javascript! It's like push notifications for your variables. Works in both Node and Browser!
 
 **ComfyVars** lets you add a callback event so you know whenever something is changed in your object.
 

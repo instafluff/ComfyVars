@@ -1,5 +1,11 @@
 # ComfyVars
-Super-Easy Observable (and Debuggable!) Values in Javascript
+Super-Easy Observable (and Debuggable!) Values in Javascript! It's like push notifications for your variables.
+**ComfyVars** lets you add a callback event to be notified whenever a value is changed in your object.
+
+```javascript
+var normalObject = {}; // no callback
+var comfyObject = ComfyVars.Watchable( ( prop, value ) => {} ); // YES CALLBACK!
+```
 
 ## Instafluff ##
 > *Come and hang out with us at the Comfiest Corner on Twitch!*
@@ -7,27 +13,6 @@ Super-Easy Observable (and Debuggable!) Values in Javascript
 > https://twitch.tv/instafluff
 
 > https://twitter.com/instafluffTV
-
-## Example ##
-
-```javascript
-var player = ComfyVars.Watchable( ( prop, value ) => {
-    if( prop === "xp" ) {
-        checkForLevelUp();
-    }
-} );
-player.name = "Instafluff";
-player.xp = 0;
-
-function checkForLevelUp() {
-    if( player.xp > 5 ) {
-        console.log( "Level up!" );
-    }
-}
-
-player.xp += 5;
-player.xp += 5; // Console: Level up!
-```
 
 ## Instructions ##
 
@@ -69,6 +54,27 @@ example.name = "Hello World";
     </script>
   </body>
 </html>
+```
+
+## Example ##
+
+```javascript
+var player = ComfyVars.Watchable( ( prop, value ) => {
+    if( prop === "xp" ) {
+        checkForLevelUp();
+    }
+} );
+player.name = "Instafluff";
+player.xp = 0;
+
+function checkForLevelUp() {
+    if( player.xp > 5 ) {
+        console.log( "Level up!" );
+    }
+}
+
+player.xp += 5;
+player.xp += 5; // Console: Level up!
 ```
 
 ## Debug Values

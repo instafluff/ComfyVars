@@ -1,0 +1,41 @@
+{
+  "name": "comfyvars",
+  "version": "1.0.0",
+  "description": "Super-Easy Observable Values in Javascript",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm-run-all --sequential build:*",
+    "build:browserify": "browserify index.js -o ./dist/comfyvars.js",
+    "build:version": "node version.js",
+    "build:uglify": "uglifyjs --compress --mangle --source-map --output ./dist/comfyvars.min.js ./dist/comfyvars.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/instafluff/ComfyVars.git"
+  },
+  "keywords": [
+    "instafluff",
+    "comfy",
+    "data",
+    "observable",
+    "databinding",
+    "values",
+    "value",
+    "object",
+    "javascript",
+    "node",
+    "nodejs"
+  ],
+  "author": "Instafluff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/instafluff/ComfyVars/issues"
+  },
+  "homepage": "https://github.com/instafluff/ComfyVars#readme",
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "npm-run-all": "^4.1.5",
+    "uglify-js": "^3.6.0"
+  }
+}

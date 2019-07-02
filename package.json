@@ -1,7 +1,7 @@
 {
   "name": "comfyvars",
   "version": "1.1.1",
-  "description": "Super-Easy Observable Values in Javascript",
+  "description": "Super-Easy Observable (and Debuggable!) Values in Javascript! It's like push notifications for your variables.",
   "main": "index.js",
   "scripts": {
     "build": "npm-run-all --sequential build:*",
